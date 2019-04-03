@@ -5,9 +5,12 @@ RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/reposit
 
 RUN apk add --update --no-cache \
   --virtual build-libs \
-  gcc gfortran g++ freetype-dev jpeg-dev libpng-dev openblas-dev libc-dev linux-headers cython geos-dev gdal-dev
+  jpeg-dev libpng-dev  libc-dev linux-headers cython geos-dev gdal-dev
 
-RUN apk add gdal nodejs npm && ln -s /usr/lib/libproj.so.13 /usr/lib/libproj.so
+RUN apk add \
+  g++ freetype-dev openblas-dev \
+  gdal nodejs npm && \
+  ln -s /usr/lib/libproj.so.13 /usr/lib/libproj.so
 
 RUN pip install numpy --no-binary numpy && \
   pip install scipy matplotlib scikit-image joblib sklearn planet mahotas affine shapely rasterio && \
