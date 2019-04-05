@@ -8,7 +8,7 @@ RUN apk add --update --no-cache \
   jpeg-dev libpng-dev  libc-dev linux-headers cython geos-dev gdal-dev
 
 RUN apk add \
-  g++ freetype-dev openblas-dev \
+  g++ freetype-dev openblas-dev proj4 \
   gdal nodejs npm && \
   ln -s /usr/lib/libproj.so.13 /usr/lib/libproj.so
 
